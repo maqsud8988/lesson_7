@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #extension
+    "import_export",
+
     #my apps
     'student',
     'library'
