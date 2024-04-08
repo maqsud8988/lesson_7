@@ -1,4 +1,3 @@
-
 import os
 from dotenv import load_dotenv
 from pathlib import Path
@@ -13,6 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+
 # SECRET_KEY = 'django-insecure-emhp49!*qdq)c=rl+gtt+69lwc5jm=ux8gwm(#8(p5p)n%9p_i'
 
 # SECURITY WARNING: don't run with debug turned on in production!

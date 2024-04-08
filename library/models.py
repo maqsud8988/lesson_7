@@ -7,7 +7,7 @@ class Author(models.Model):
     birth_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.first_name}{self.last_name}"
+        return f"{self.id} {self.first_name}{self.last_name}"
 
 class Comments(models.Model):
     text = models.TextField()
@@ -17,8 +17,8 @@ class Comments(models.Model):
         return self.text
 
 class Book(models.Model):
-    title = models.CharField(max_length=220)
-    description = models.TextField()
+    title = models.CharField(max_length=220, verbose_name="Kitobning nomi")
+    description = models.TextField("Izoh")
     price = models.FloatField()
     comments = models.ManyToManyField(Comments)
     count = models.IntegerField(default=1)
