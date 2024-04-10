@@ -28,3 +28,4 @@ class BookingBookAdmin(ImportExportModelAdmin):
 @admin.register(Comments)
 class CommentsAdmin(admin.ModelAdmin):
     list_display = ("id", "text", "student")
+

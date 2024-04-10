@@ -1,28 +1,30 @@
 from django.shortcuts import render
 from django.views import View
 from .models import Book
-from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class BooksListView(View):
+class BooksListView(LoginRequiredMixin, View):
     def get(self, request):
         search = request.GET.get("search")
+        print(f">>>>>>>>>>>>>>>>>>>>>>{request.GET}")
         if not search:
             books = Book.objects.all()
-            contex = {
-                "books": books,
-                "search": search
+            context = {
+                "books": books
             }
-            return render(request, "library.html", contex)
+            return render(request, "library.html", context)
         else:
             books = Book.objects.filter(title__icontains=search)
             if books:
-                contex = {
+                context = {
                     "books": books,
-                    "search": search
+                    # "search": search
                 }
-                return render(request, "library.html", contex)
+                return render(request, "library.html", context)
+
             else:
                 return render(request, "not_found.html")
+
 class BookDetailView(View):
     def get(self, request, id):
         book = Book.objects.get(id=id)

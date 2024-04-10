@@ -1,8 +1,8 @@
 import os
-from dotenv import load_dotenv
 from pathlib import Path
-
+from dotenv import load_dotenv
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,15 +11,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECRET_KEY = 'django-insecure-emhp49!*qdq)c=rl+gtt+69lwc5jm=ux8gwm(#8(p5p)n%9p_i'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = "login"
 
 # Application definition
 
@@ -30,14 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #extension
+    # extension
+    "django_extensions",
     "import_export",
 
-    #my apps
+    # apps
     'student',
-    'library'
-
+    'library',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -92,6 +94,7 @@ DATABASES = {
         "PORT": os.getenv("PORT"),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -133,3 +136,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+MEDIA_URL = 'media/'
+MEDIAFILES_DIRS = [
+    BASE_DIR / "media",
+]
